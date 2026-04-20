@@ -30,14 +30,14 @@ class CarroController extends Controller
             'matricula'         => 'required|string|max:6',
             'propietario'       => 'required|string|max:255',
             'marca'             => 'required|string|max:100',
-            'cilindraje'             => 'required|numeric|min:0',
-            'disponible'             => 'boolean',
+            'cilindraje'        => 'required|numeric|min:0',
+            'disponible'        => 'boolean',
         ]);
 
-        // antes de crear, forzamos que disponible sea true o false
-        $request->merge([
-            'disponible' => $request->has('disponible'),
-        ]);
+        // // antes de crear, forzamos que disponible sea true o false
+        // $request->merge([
+        //     'disponible' => $request->has('disponible'),
+        // ]);
 
         //4.le pasamos al encargado CARRO los datos y guardamos en la bd
         $carro = Carro::create($request->all());
