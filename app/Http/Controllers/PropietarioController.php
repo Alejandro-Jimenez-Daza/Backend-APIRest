@@ -29,7 +29,19 @@ class PropietarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'cedula'         => 'required|integer',
+            'nombre_completo'       => 'required', //cambia esto al hacer una relacion
+            //                                  ↑tabla              ↑columna, valida que el id sea real.
+            'correo'             => 'required|email|max:255',
+            'direccion'        => 'required|string',
+            'fecha_nacimiento'        => 'required|date',
+        ]);
+
+        $propietario = Propietario::create($request->all());
+        //respondo al usuario con el carro recien creado
+        return response()->json($propietario, 201);
+
     }
 
     /**
@@ -37,7 +49,7 @@ class PropietarioController extends Controller
      */
     public function show(Propietario $propietario)
     {
-        //
+        return response()->json($propietario);
     }
 
     /**
@@ -53,7 +65,21 @@ class PropietarioController extends Controller
      */
     public function update(Request $request, Propietario $propietario)
     {
-        //
+            $request->validate([
+            'cedula'         => 'required|integer',
+            'nombre_completo'       => 'required', //cambia esto al hacer una relacion
+            //                                  ↑tabla              ↑columna, valida que el id sea real.
+            'correo'             => 'required|email|max:255',
+            'direccion'        => 'required|string',
+            'fecha_nacimiento'        => 'required|date',
+        ]);
+
+        //4.le pasamos al encargado CARRO los datos y guardamos en la bd
+        $propietario -> update($request->all());
+        //respondo al usuario con el carro recien creado
+        return response()->json($propietario, 200);
+
+        //la flecha -> es accede a algo o haz algo.
     }
 
     /**
@@ -61,6 +87,16 @@ class PropietarioController extends Controller
      */
     public function destroy(Propietario $propietario)
     {
-        //
+        $propietario->delete();
+        return response()->json(['mensaje' => 'Producto eliminado'], 200);
     }
 }
+
+
+/*
+
+CódigoSignificaCuándo usarlo
+200OKGET, PUT/PATCH, DELETE — operación exitosa
+201CreatedPOST — recurso recién creado
+204No Content
+*/

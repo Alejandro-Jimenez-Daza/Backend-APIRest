@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Propietario extends Model
 {
     protected $fillable = [
-        'ceudula',
+        'cedula',
         'nombre_completo',
         'correo',
         'direccion',
@@ -19,6 +19,7 @@ class Propietario extends Model
 El hijo (Carro) usa belongsTo — "pertenezco a un propietario"
 El padre (Propietario) usa hasMany — "tengo muchos carros"*/
 
+// la relacion va en ambos modelo
 // Un propietario tiene muchos carros
     public function carros()
     {
