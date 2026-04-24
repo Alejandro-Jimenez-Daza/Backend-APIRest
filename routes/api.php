@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarroController;
 use App\Http\Controllers\PropietarioController;
+use App\Http\Controllers\RevisionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('carros', CarroController::class);
 Route::apiResource('propietarios', PropietarioController::class);
+Route::apiResource('revisiones', RevisionController::class)->parameters(['revisiones' => 'revision']); //para que no pluralize mal laravel
+
 
 
 Route::get('/user', function (Request $request) {

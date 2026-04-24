@@ -28,7 +28,7 @@ return new class extends Migration
             $table->timestamps();
             //llave foranea a propietario (aca es la conexio, despues de crear elc ampo arriba porque si no ps no me va a dar con string):
 
-        });
+        }); 
 
 
     }
